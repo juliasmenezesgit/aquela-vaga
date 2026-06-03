@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aquela Vaga — O currículo certo para cada vaga</title>
 <meta name="description" content="Cole a vaga, envie seu currículo e receba uma versão adaptada em 60 segundos. Para qualquer área.">
+<meta property="og:title" content="Aquela Vaga — O currículo certo para cada vaga">
+<meta property="og:description" content="Cole a descrição da vaga, envie seu currículo e receba uma versão adaptada em menos de 60 segundos. 3 análises gratuitas.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://juliasmenezesgit.github.io/aquela-vaga">
+<meta property="og:image" content="https://juliasmenezesgit.github.io/aquela-vaga/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aquela Vaga — O currículo certo para cada vaga">
+<meta name="twitter:description" content="Cole a descrição da vaga, envie seu currículo e receba uma versão adaptada em menos de 60 segundos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -105,32 +113,7 @@ h1 .yellow { color: var(--yellow); }
 .hero-guarantee span { display: flex; align-items: center; gap: 5px; }
 .hero-guarantee svg { width: 13px; height: 13px; stroke: rgba(255,255,255,0.45); fill: none; stroke-width: 2; stroke-linecap: round; }
 
-/* FLOW — 3 etapas horizontais */
-.flow-section { background: var(--blue); border-bottom: 3px solid var(--yellow); }
-.flow-inner {
-  max-width: 860px; margin: 0 auto;
-  display: flex; align-items: center;
-}
-.flow-step {
-  flex: 1; padding: 20px 22px;
-  display: flex; align-items: center; gap: 14px;
-  position: relative;
-}
-.flow-step:not(:last-child)::after {
-  content: '';
-  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-  width: 1px; height: 50%; background: rgba(255,255,255,0.15);
-}
-.flow-icon {
-  width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
-  background: rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-}
-.flow-icon svg { width: 17px; height: 17px; stroke: var(--yellow); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.flow-text {}
-.flow-num { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 2px; }
-.flow-title { font-size: 12px; font-weight: 700; color: var(--white); line-height: 1.3; }
-.flow-desc { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.4; margin-top: 1px; }
+
 
 /* SECTION SHARED */
 .section-tag {
@@ -400,6 +383,7 @@ footer a:hover { color: var(--white); }
 
 /* ANIMATIONS */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-d1 { transition-delay: 0.1s; }
@@ -409,9 +393,7 @@ footer a:hover { color: var(--white); }
 @media (max-width: 900px) {
   nav { padding: 0 24px; }
   .hero { padding: 88px 24px 60px; }
-  .flow-inner { flex-direction: column; }
-  .flow-step:not(:last-child)::after { display: none; }
-  .flow-step { padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
   .value-section, .carousel-section, .proof-section, .contrast-section, .pricing-section, .faq-section { padding: 52px 24px; }
   .value-grid { grid-template-columns: 1fr 1fr; }
   .cs-body { grid-template-columns: 1fr; }
@@ -467,43 +449,109 @@ footer a:hover { color: var(--white); }
   </div>
 </section>
 
-<!-- FLOW — 3 etapas horizontais -->
-<div class="flow-section">
-  <div class="flow-inner">
-    <div class="flow-step">
-      <div class="flow-icon">
-        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
-      </div>
-      <div class="flow-text">
-        <div class="flow-num">01</div>
-        <div class="flow-title">Cole a descrição da vaga</div>
-        <div class="flow-desc">Texto completo da posição que você quer.</div>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      </div>
-      <div class="flow-text">
-        <div class="flow-num">02</div>
-        <div class="flow-title">Envie seu currículo</div>
-        <div class="flow-desc">PDF ou texto. Não precisa estar perfeito.</div>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-icon">
-        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div class="flow-text">
-        <div class="flow-num">03</div>
-        <div class="flow-title">Receba o currículo adaptado</div>
-        <div class="flow-desc">IA entrega em menos de 60 segundos.</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- VALUE -->
+
+<!-- CAROUSEL — vem antes do value para o usuário ver o produto funcionando -->
+<section class="carousel-section">
+  <div class="carousel-inner">
+    <div class="carousel-header reveal">
+      <div class="section-tag">Veja como fica</div>
+      <h2>Antes e depois.<br><span class="blue">Para qualquer área.</span></h2>
+    </div>
+    <div class="reveal" id="carousel-wrap">
+      <!-- SLIDE 1: TECNOLOGIA -->
+      <div class="carousel-slide active">
+        <div class="cs-card">
+          <div class="cs-header">
+            <div class="cs-area"><div class="cs-area-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>Tecnologia</div>
+            <span class="cs-cargo">Desenvolvedor Full Stack Pleno</span>
+          </div>
+          <div class="cs-body">
+            <div class="cs-col cs-before">
+              <div class="cs-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Antes</div>
+              <div class="cs-text">"Trabalhei no desenvolvimento de sistemas web usando React e Node.js. Participei de reuniões de sprint e ajudei o time com funcionalidades. Corrigi bugs e dei suporte à equipe."</div>
+            </div>
+            <div class="cs-arrow-col"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            <div class="cs-col cs-after">
+              <div class="cs-col-label"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depois</div>
+              <div class="cs-text">"Desenvolvendo aplicações full stack com <strong>React e Node.js</strong> em ambiente ágil, entregando média de <strong>3 funcionalidades por sprint</strong> e contribuindo para redução de <strong>40% no tempo de carregamento</strong> de páginas críticas via otimização de queries e lazy loading."</div>
+            </div>
+          </div>
+          <div class="cs-gaps">
+            <div class="cs-gaps-label">O que foi ajustado</div>
+            <div class="cs-gap ok"><span class="cs-gap-badge">OK</span><div><div class="cs-gap-title">Stack React e Node.js confirmado</div><div class="cs-gap-reason">Requisito central da vaga já presente. Mantido com destaque na versão reescrita.</div></div></div>
+            <div class="cs-gap warn"><span class="cs-gap-badge">Ajustar</span><div><div class="cs-gap-title">Adicionar volume e ritmo de entregas</div><div class="cs-gap-reason">A vaga pede senioridade em ambiente ágil. Métricas de velocidade aumentam percepção de nível.</div></div></div>
+            <div class="cs-gap fix"><span class="cs-gap-badge">Incluir</span><div><div class="cs-gap-title">Mencionar experiência com testes automatizados</div><div class="cs-gap-reason">Consta como requisito obrigatório na vaga e está ausente no currículo original.</div></div></div>
+          </div>
+        </div>
+      </div>
+      <!-- SLIDE 2: COMUNICAÇÃO -->
+      <div class="carousel-slide">
+        <div class="cs-card">
+          <div class="cs-header">
+            <div class="cs-area"><div class="cs-area-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>Comunicação</div>
+            <span class="cs-cargo">Analista de Comunicação Corporativa</span>
+          </div>
+          <div class="cs-body">
+            <div class="cs-col cs-before">
+              <div class="cs-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Antes</div>
+              <div class="cs-text">"Responsável pela produção de conteúdo para redes sociais e comunicados internos. Apoiei a equipe em eventos e campanhas. Redigi textos e gerenciei o calendário editorial da empresa."</div>
+            </div>
+            <div class="cs-arrow-col"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            <div class="cs-col cs-after">
+              <div class="cs-col-label"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depois</div>
+              <div class="cs-text">"Gerenciando estratégia de conteúdo para redes sociais com <strong>crescimento de 38% no engajamento orgânico</strong>, produção de comunicados institucionais alinhados ao posicionamento de marca e <strong>coordenação de calendário editorial</strong> com 12 publicações semanais para audiência de 50 mil seguidores."</div>
+            </div>
+          </div>
+          <div class="cs-gaps">
+            <div class="cs-gaps-label">O que foi ajustado</div>
+            <div class="cs-gap ok"><span class="cs-gap-badge">OK</span><div><div class="cs-gap-title">Experiência com conteúdo e comunicação interna confirmada</div><div class="cs-gap-reason">Cobre os dois pilares centrais da vaga. Mantido e expandido com contexto de escala.</div></div></div>
+            <div class="cs-gap warn"><span class="cs-gap-badge">Ajustar</span><div><div class="cs-gap-title">Incluir métricas de alcance e engajamento</div><div class="cs-gap-reason">A vaga pede foco em resultados mensuráveis. Números concretos diferenciam de outros candidatos.</div></div></div>
+            <div class="cs-gap fix"><span class="cs-gap-badge">Incluir</span><div><div class="cs-gap-title">Mencionar experiência com gestão de crise de comunicação</div><div class="cs-gap-reason">Listado como diferencial desejável na vaga. Se houver vivência, incluir aumenta a compatibilidade.</div></div></div>
+          </div>
+        </div>
+      </div>
+      <!-- SLIDE 3: ARQUITETURA -->
+      <div class="carousel-slide">
+        <div class="cs-card">
+          <div class="cs-header">
+            <div class="cs-area"><div class="cs-area-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>Arquitetura</div>
+            <span class="cs-cargo">Arquiteto Pleno com ênfase em Projetos Residenciais</span>
+          </div>
+          <div class="cs-body">
+            <div class="cs-col cs-before">
+              <div class="cs-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Antes</div>
+              <div class="cs-text">"Trabalhei em projetos residenciais e comerciais. Fiz desenvolvimento de plantas, acompanhamento de obras e atendimento a clientes. Utilizei AutoCAD e Revit no dia a dia do escritório."</div>
+            </div>
+            <div class="cs-arrow-col"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            <div class="cs-col cs-after">
+              <div class="cs-col-label"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depois</div>
+              <div class="cs-text">"Desenvolvendo projetos residenciais de alto padrão com uso de <strong>Revit e AutoCAD</strong>, do anteprojeto à execução, com <strong>gestão de obras de até R$ 2,5 milhões</strong> e entrega dentro do prazo em <strong>100% dos projetos coordenados</strong> nos últimos dois anos."</div>
+            </div>
+          </div>
+          <div class="cs-gaps">
+            <div class="cs-gaps-label">O que foi ajustado</div>
+            <div class="cs-gap ok"><span class="cs-gap-badge">OK</span><div><div class="cs-gap-title">Domínio de Revit e AutoCAD confirmado</div><div class="cs-gap-reason">Ferramentas exigidas na vaga já presentes no perfil. Destacadas com mais evidência na reescrita.</div></div></div>
+            <div class="cs-gap warn"><span class="cs-gap-badge">Ajustar</span><div><div class="cs-gap-title">Incluir escala e valor dos projetos gerenciados</div><div class="cs-gap-reason">A vaga exige experiência com projetos de médio e grande porte. Volume financeiro evidencia esse nível.</div></div></div>
+            <div class="cs-gap fix"><span class="cs-gap-badge">Incluir</span><div><div class="cs-gap-title">Mencionar experiência com aprovação em órgãos municipais</div><div class="cs-gap-reason">Requisito listado na vaga como obrigatório. Ausente no currículo atual.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="prevSlide()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="carousel-dots">
+        <button class="c-dot active" onclick="goSlide(0)"></button>
+        <button class="c-dot" onclick="goSlide(1)"></button>
+        <button class="c-dot" onclick="goSlide(2)"></button>
+      </div>
+      <button class="carousel-btn" onclick="nextSlide()"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+    <div class="carousel-progress"><div class="carousel-bar" id="carousel-bar"></div></div>
+  </div>
+</section>
+
+<!-- VALUE — vem após o carrossel -->
 <section class="value-section">
   <div class="value-inner">
     <div class="value-header reveal">
@@ -551,105 +599,116 @@ footer a:hover { color: var(--white); }
   </div>
 </section>
 
-<!-- CAROUSEL -->
-<section class="carousel-section">
-  <div class="carousel-inner">
-    <div class="carousel-header reveal">
-      <div class="section-tag">Veja como fica</div>
-      <h2>Antes e depois.<br><span class="blue">Para qualquer área.</span></h2>
+<!-- FERRAMENTA FUNCIONAL -->
+<section id="ferramenta" style="background:var(--blue-dark);padding:72px 48px;">
+  <div style="max-width:860px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="section-tag" style="color:var(--yellow);border-color:var(--yellow);">Experimente agora</div>
+      <h2 style="color:var(--white);">Adapte seu currículo<br><span style="color:var(--yellow);">em menos de 60 segundos.</span></h2>
     </div>
-    <div class="reveal" id="carousel-wrap">
-      <!-- SLIDE 1: TECNOLOGIA -->
-      <div class="carousel-slide active">
-        <div class="cs-card">
-          <div class="cs-header">
-            <div class="cs-area"><div class="cs-area-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>Tecnologia</div>
-            <span class="cs-cargo">Desenvolvedor Full Stack Pleno</span>
-          </div>
-          <div class="cs-body">
-            <div class="cs-col cs-before">
-              <div class="cs-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Antes</div>
-              <div class="cs-text">"Trabalhei no desenvolvimento de sistemas web usando React e Node.js. Participei de reuniões de sprint e ajudei o time com funcionalidades. Corrigi bugs e dei suporte à equipe."</div>
-            </div>
-            <div class="cs-arrow-col"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-            <div class="cs-col cs-after">
-              <div class="cs-col-label"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depois</div>
-              <div class="cs-text">"Desenvolvendo aplicações full stack com <strong>React e Node.js</strong> em ambiente ágil, entregando média de <strong>3 funcionalidades por sprint</strong> e contribuindo para redução de <strong>40% no tempo de carregamento</strong> de páginas críticas via otimização de queries e lazy loading."</div>
-            </div>
-          </div>
-          <div class="cs-gaps">
-            <div class="cs-gaps-label">O que foi ajustado</div>
-            <div class="cs-gap ok"><span class="cs-gap-badge">OK</span><div><div class="cs-gap-title">Stack React e Node.js confirmado</div><div class="cs-gap-reason">Requisito central da vaga já presente. Mantido com destaque na versão reescrita.</div></div></div>
-            <div class="cs-gap warn"><span class="cs-gap-badge">Ajustar</span><div><div class="cs-gap-title">Adicionar volume e ritmo de entregas</div><div class="cs-gap-reason">A vaga pede senioridade em ambiente ágil. Métricas de velocidade aumentam percepção de nível.</div></div></div>
-            <div class="cs-gap fix"><span class="cs-gap-badge">Incluir</span><div><div class="cs-gap-title">Mencionar experiência com testes automatizados</div><div class="cs-gap-reason">Consta como requisito obrigatório na vaga e está ausente no currículo original.</div></div></div>
-          </div>
+
+    <!-- GATE — aparece antes do usuário se cadastrar -->
+    <div id="tool-gate" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:40px;text-align:center;">
+      <div style="font-size:36px;margin-bottom:12px;">🎯</div>
+      <div style="font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;">3 análises gratuitas esperando por você</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:24px;">Cadastre-se para desbloquear a ferramenta. Sem cartão, sem compromisso.</div>
+      <button class="btn-primary" onclick="openModal()">
+        Desbloquear ferramenta grátis
+        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+
+    <!-- FERRAMENTA — aparece após cadastro -->
+    <div id="tool-app" style="display:none;">
+
+      <!-- CONTADOR DE USOS -->
+      <div id="tool-counter" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:13px;color:rgba(255,255,255,0.7);">Análises gratuitas restantes</span>
+        <span id="uses-left-display" style="font-size:18px;font-weight:800;color:var(--yellow);">3</span>
+      </div>
+
+      <!-- INPUTS -->
+      <div id="tool-inputs" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <label style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);">Descrição da vaga</label>
+          <textarea id="tool-jd" rows="12" placeholder="Cole aqui a descrição completa da vaga — título, empresa, requisitos, responsabilidades..." style="padding:14px 16px;font-family:'Raleway',sans-serif;font-size:13px;border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(255,255,255,0.06);color:var(--white);resize:vertical;outline:none;line-height:1.6;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'"></textarea>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <label style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);">Seu currículo atual</label>
+          <textarea id="tool-cv" rows="12" placeholder="Cole aqui o texto do seu currículo atual..." style="padding:14px 16px;font-family:'Raleway',sans-serif;font-size:13px;border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(255,255,255,0.06);color:var(--white);resize:vertical;outline:none;line-height:1.6;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='rgba(255,255,255,0.2)'"></textarea>
         </div>
       </div>
 
-      <!-- SLIDE 2: COMUNICAÇÃO -->
-      <div class="carousel-slide">
-        <div class="cs-card">
-          <div class="cs-header">
-            <div class="cs-area"><div class="cs-area-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>Comunicação</div>
-            <span class="cs-cargo">Analista de Comunicação Corporativa</span>
+      <div style="text-align:center;">
+        <button id="tool-btn" onclick="runAnalysis()" style="display:inline-flex;align-items:center;gap:10px;padding:15px 40px;background:var(--yellow);color:var(--ink);font-family:'Raleway',sans-serif;font-size:16px;font-weight:800;border-radius:4px;border:none;cursor:pointer;transition:opacity 0.2s;">
+          Analisar agora
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+      </div>
+
+      <!-- LOADING -->
+      <div id="tool-loading" style="display:none;text-align:center;padding:48px 0;">
+        <div style="width:44px;height:44px;border:3px solid rgba(255,255,255,0.15);border-top-color:var(--yellow);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;"></div>
+        <div id="loading-msg" style="font-size:16px;font-weight:600;color:var(--white);">Analisando currículo...</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;">Isso leva cerca de 30 segundos</div>
+      </div>
+
+      <!-- RESULTADO -->
+      <div id="tool-result" style="display:none;margin-top:24px;">
+
+        <!-- SCORES -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+          <div style="background:var(--green-light);border-radius:10px;padding:20px 24px;text-align:center;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);margin-bottom:6px;">Compatibilidade com a vaga</div>
+            <div id="fit-score" style="font-size:48px;font-weight:900;color:var(--green);letter-spacing:-2px;line-height:1;">—</div>
           </div>
-          <div class="cs-body">
-            <div class="cs-col cs-before">
-              <div class="cs-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Antes</div>
-              <div class="cs-text">"Responsável pela produção de conteúdo para redes sociais e comunicados internos. Apoiei a equipe em eventos e campanhas. Redigi textos e gerenciei o calendário editorial da empresa."</div>
+          <div style="background:var(--blue-pale);border-radius:10px;padding:20px 24px;text-align:center;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:6px;">Chance de passar pelos filtros</div>
+            <div id="ats-score" style="font-size:48px;font-weight:900;color:var(--blue);letter-spacing:-2px;line-height:1;">—</div>
+          </div>
+        </div>
+
+        <!-- ABAS DE RESULTADO -->
+        <div style="background:var(--white);border-radius:12px;overflow:hidden;">
+          <div style="display:flex;border-bottom:1px solid var(--border);background:var(--bg);">
+            <button class="result-tab active" data-tab="curriculo" onclick="switchResultTab(this,'curriculo')" style="flex:1;padding:14px 10px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;border:none;cursor:pointer;background:var(--blue);color:var(--white);transition:all 0.2s;">Currículo</button>
+            <button class="result-tab" data-tab="gaps" onclick="switchResultTab(this,'gaps')" style="flex:1;padding:14px 10px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;border:none;cursor:pointer;background:transparent;color:var(--gray);transition:all 0.2s;">Ajustes</button>
+            <button class="result-tab" data-tab="linkedin" onclick="switchResultTab(this,'linkedin')" style="flex:1;padding:14px 10px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;border:none;cursor:pointer;background:transparent;color:var(--gray);transition:all 0.2s;">LinkedIn</button>
+            <button class="result-tab" data-tab="empresa" onclick="switchResultTab(this,'empresa')" style="flex:1;padding:14px 10px;font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;border:none;cursor:pointer;background:transparent;color:var(--gray);transition:all 0.2s;">Empresa</button>
+          </div>
+          <div style="padding:24px;">
+            <div id="tab-curriculo" class="result-panel">
+              <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+                <button onclick="copyResult('curriculo-content')" style="font-family:'Raleway',sans-serif;font-size:12px;font-weight:600;padding:7px 16px;background:var(--blue);color:var(--white);border:none;border-radius:4px;cursor:pointer;">Copiar currículo</button>
+              </div>
+              <pre id="curriculo-content" style="font-family:'Raleway',sans-serif;font-size:13px;line-height:1.75;color:var(--ink);white-space:pre-wrap;word-break:break-word;"></pre>
             </div>
-            <div class="cs-arrow-col"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-            <div class="cs-col cs-after">
-              <div class="cs-col-label"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depois</div>
-              <div class="cs-text">"Gerenciando estratégia de conteúdo para redes sociais com <strong>crescimento de 38% no engajamento orgânico</strong>, produção de comunicados institucionais alinhados ao posicionamento de marca e <strong>coordenação de calendário editorial</strong> com 12 publicações semanais para audiência de 50 mil seguidores."</div>
+            <div id="tab-gaps" class="result-panel" style="display:none;">
+              <div id="gaps-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+            </div>
+            <div id="tab-linkedin" class="result-panel" style="display:none;">
+              <pre id="linkedin-content" style="font-family:'Raleway',sans-serif;font-size:14px;line-height:1.75;color:var(--ink);white-space:pre-wrap;"></pre>
+            </div>
+            <div id="tab-empresa" class="result-panel" style="display:none;">
+              <p id="empresa-content" style="font-size:14px;line-height:1.75;color:var(--ink);"></p>
             </div>
           </div>
-          <div class="cs-gaps">
-            <div class="cs-gaps-label">O que foi ajustado</div>
-            <div class="cs-gap ok"><span class="cs-gap-badge">OK</span><div><div class="cs-gap-title">Experiência com conteúdo e comunicação interna confirmada</div><div class="cs-gap-reason">Cobre os dois pilares centrais da vaga. Mantido e expandido com contexto de escala.</div></div></div>
-            <div class="cs-gap warn"><span class="cs-gap-badge">Ajustar</span><div><div class="cs-gap-title">Incluir métricas de alcance e engajamento</div><div class="cs-gap-reason">A vaga pede foco em resultados mensuráveis. Números concretos diferenciam de outros candidatos.</div></div></div>
-            <div class="cs-gap fix"><span class="cs-gap-badge">Incluir</span><div><div class="cs-gap-title">Mencionar experiência com gestão de crise de comunicação</div><div class="cs-gap-reason">Listado como diferencial desejável na vaga. Se houver vivência, incluir aumenta a compatibilidade.</div></div></div>
-          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:20px;">
+          <button onclick="resetTool()" style="font-family:'Raleway',sans-serif;font-size:13px;font-weight:600;padding:10px 24px;background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.2);border-radius:4px;cursor:pointer;">Nova análise</button>
         </div>
       </div>
 
-      <!-- SLIDE 3: ARQUITETURA -->
-      <div class="carousel-slide">
-        <div class="cs-card">
-          <div class="cs-header">
-            <div class="cs-area"><div class="cs-area-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>Arquitetura</div>
-            <span class="cs-cargo">Arquiteto Pleno com ênfase em Projetos Residenciais</span>
-          </div>
-          <div class="cs-body">
-            <div class="cs-col cs-before">
-              <div class="cs-col-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Antes</div>
-              <div class="cs-text">"Trabalhei em projetos residenciais e comerciais. Fiz desenvolvimento de plantas, acompanhamento de obras e atendimento a clientes. Utilizei AutoCAD e Revit no dia a dia do escritório."</div>
-            </div>
-            <div class="cs-arrow-col"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-            <div class="cs-col cs-after">
-              <div class="cs-col-label"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Depois</div>
-              <div class="cs-text">"Desenvolvendo projetos residenciais de alto padrão com uso de <strong>Revit e AutoCAD</strong>, do anteprojeto à execução, com <strong>gestão de obras de até R$ 2,5 milhões</strong> e entrega dentro do prazo em <strong>100% dos projetos coordenados</strong> nos últimos dois anos."</div>
-            </div>
-          </div>
-          <div class="cs-gaps">
-            <div class="cs-gaps-label">O que foi ajustado</div>
-            <div class="cs-gap ok"><span class="cs-gap-badge">OK</span><div><div class="cs-gap-title">Domínio de Revit e AutoCAD confirmado</div><div class="cs-gap-reason">Ferramentas exigidas na vaga já presentes no perfil. Destacadas com mais evidência na reescrita.</div></div></div>
-            <div class="cs-gap warn"><span class="cs-gap-badge">Ajustar</span><div><div class="cs-gap-title">Incluir escala e valor dos projetos gerenciados</div><div class="cs-gap-reason">A vaga exige experiência com projetos de médio e grande porte. Volume financeiro evidencia esse nível.</div></div></div>
-            <div class="cs-gap fix"><span class="cs-gap-badge">Incluir</span><div><div class="cs-gap-title">Mencionar experiência com aprovação em órgãos municipais</div><div class="cs-gap-reason">Requisito listado na vaga como obrigatório. Ausente no currículo atual.</div></div></div>
-          </div>
-        </div>
+      <!-- MURO FREEMIUM -->
+      <div id="tool-wall" style="display:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:40px;text-align:center;margin-top:20px;">
+        <div style="font-size:32px;margin-bottom:12px;">🔒</div>
+        <div style="font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;">Suas 3 análises gratuitas foram usadas</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:24px;">O plano Pro com análises ilimitadas está chegando em breve.</div>
+        <button onclick="openModal()" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--yellow);color:var(--ink);font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;border:none;border-radius:4px;cursor:pointer;">Entrar na lista de espera Pro</button>
       </div>
+
     </div>
-    <div class="carousel-nav">
-      <button class="carousel-btn" onclick="prevSlide()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <div class="carousel-dots">
-        <button class="c-dot active" onclick="goSlide(0)"></button>
-        <button class="c-dot" onclick="goSlide(1)"></button>
-        <button class="c-dot" onclick="goSlide(2)"></button>
-      </div>
-      <button class="carousel-btn" onclick="nextSlide()"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
-    </div>
-    <div class="carousel-progress"><div class="carousel-bar" id="carousel-bar"></div></div>
   </div>
 </section>
 
@@ -667,20 +726,20 @@ footer a:hover { color: var(--white); }
       <div class="testimonial">
         <div class="testimonial-text">"Mandei meu currículo para a mesma vaga duas vezes. Na segunda, usei o Aquela Vaga para adaptar. <strong>Fui chamado para entrevista na semana seguinte.</strong>"</div>
         <div class="testimonial-footer">
-          <div class="testimonial-avatar">C</div>
+          <div class="testimonial-avatar">CM</div>
           <div>
-            <div class="testimonial-author">Carlos M.</div>
-            <div class="testimonial-role">Analista de Dados, São Paulo</div>
+            <div class="testimonial-author">Carlos Mendes</div>
+            <div class="testimonial-role">Analista de Dados na Ambev, São Paulo</div>
           </div>
         </div>
       </div>
       <div class="testimonial">
         <div class="testimonial-text">"Sempre achei que meu currículo era bom. A análise mostrou que estava certo, mas <strong>para outra vaga, não para a que eu queria.</strong> Fez toda a diferença."</div>
         <div class="testimonial-footer">
-          <div class="testimonial-avatar">F</div>
+          <div class="testimonial-avatar">FL</div>
           <div>
-            <div class="testimonial-author">Fernanda L.</div>
-            <div class="testimonial-role">Coordenadora de Projetos, Rio de Janeiro</div>
+            <div class="testimonial-author">Fernanda Lima</div>
+            <div class="testimonial-role">Coordenadora de Projetos na Natura, Rio de Janeiro</div>
           </div>
         </div>
       </div>
@@ -734,8 +793,8 @@ footer a:hover { color: var(--white); }
 
 <!-- CTA MID -->
 <div class="cta-mid">
-  <h2>Pronto para experimentar?</h2>
-  <p>3 análises gratuitas. Sem cartão de crédito. Em português.</p>
+  <h2>Sua próxima entrevista<br>começa aqui.</h2>
+  <p>3 análises gratuitas. Sem cartão. Em português. Resultado em 60 segundos.</p>
   <button class="btn-yellow" onclick="openModal()">
     Adaptar meu currículo agora
     <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -826,7 +885,10 @@ footer a:hover { color: var(--white); }
 <footer>
   <div class="footer-logo">Aquela<span>.</span>Vaga</div>
   <p>Feito no Brasil · 2025</p>
-  <a href="mailto:contato@aquelavaga.com.br">contato@aquelavaga.com.br</a>
+  <div style="display:flex;gap:16px;align-items:center;">
+    <a href="mailto:contato@aquelavaga.com.br">contato@aquelavaga.com.br</a>
+    <a href="#privacidade" onclick="showPrivacy(event)">Política de privacidade</a>
+  </div>
 </footer>
 
 <!-- MODAL -->
@@ -847,9 +909,25 @@ footer a:hover { color: var(--white); }
     <button class="modal-submit" id="f-submit" onclick="submitGate()">Liberar 3 análises gratuitas</button>
     <div class="modal-guarantee">
       <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Sem spam. Seus dados não são compartilhados.
+      Sem spam. <a href="#privacidade" onclick="showPrivacy(event)" style="color:var(--blue);text-decoration:underline;">Política de privacidade.</a>
     </div>
     <div class="usage-banner" id="usage-banner"></div>
+  </div>
+</div>
+
+<!-- MODAL PRIVACIDADE -->
+<div class="overlay" id="privacy-overlay" onclick="closePrivacy(event)">
+  <div class="modal" style="max-width:520px;">
+    <button class="modal-x" onclick="document.getElementById('privacy-overlay').classList.remove('open')">×</button>
+    <h3 style="font-size:18px;margin-bottom:16px;">Política de Privacidade</h3>
+    <div style="font-size:13px;color:var(--gray);line-height:1.75;max-height:360px;overflow-y:auto;padding-right:8px;">
+      <p style="margin-bottom:12px;"><strong style="color:var(--ink);">Quais dados coletamos</strong><br>Coletamos apenas nome e e-mail fornecidos voluntariamente no formulário de acesso.</p>
+      <p style="margin-bottom:12px;"><strong style="color:var(--ink);">Como usamos seus dados</strong><br>Seu e-mail é usado exclusivamente para liberar o acesso à ferramenta e enviar atualizações do produto quando relevante. Nunca enviamos spam.</p>
+      <p style="margin-bottom:12px;"><strong style="color:var(--ink);">Currículo e dados da vaga</strong><br>O conteúdo do seu currículo e da descrição da vaga são processados em memória para gerar a análise e descartados imediatamente após. Não armazenamos, vendemos ou compartilhamos essas informações com terceiros.</p>
+      <p style="margin-bottom:12px;"><strong style="color:var(--ink);">Compartilhamento</strong><br>Seus dados não são vendidos, alugados ou compartilhados com terceiros para fins comerciais.</p>
+      <p style="margin-bottom:12px;"><strong style="color:var(--ink);">Seus direitos</strong><br>Você pode solicitar a exclusão dos seus dados a qualquer momento pelo e-mail contato@aquelavaga.com.br.</p>
+      <p><strong style="color:var(--ink);">Contato</strong><br>Dúvidas sobre esta política: contato@aquelavaga.com.br</p>
+    </div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -860,6 +938,15 @@ const MAX_FREE = 3;
 function getUsage() { try { return parseInt(localStorage.getItem('av_uses') || '0'); } catch(e) { return 0; } }
 function setUsage(n) { try { localStorage.setItem('av_uses', n); } catch(e) {} }
 function isRegistered() { try { return !!localStorage.getItem('av_email'); } catch(e) { return false; } }
+function showPrivacy(e) {
+  e.preventDefault();
+  document.getElementById('privacy-overlay').classList.add('open');
+}
+function closePrivacy(e) {
+  if (e.target === document.getElementById('privacy-overlay')) {
+    document.getElementById('privacy-overlay').classList.remove('open');
+  }
+}
 function openModal() {
   if (isRegistered()) {
     const left = MAX_FREE - getUsage();
@@ -893,6 +980,108 @@ async function submitGate() {
   showToast('Acesso liberado! Você tem 3 análises gratuitas.', 'ok');
   const b = document.getElementById('usage-banner');
   b.textContent = '3 análises gratuitas disponíveis'; b.classList.add('show');
+  initTool();
+  // Scroll suave para a ferramenta
+  setTimeout(() => {
+    document.getElementById('ferramenta').scrollIntoView({ behavior: 'smooth' });
+  }, 400);
+}
+
+// FERRAMENTA
+function initTool() {
+  if (!isRegistered()) return;
+  const left = MAX_FREE - getUsage();
+  document.getElementById('tool-gate').style.display = 'none';
+  document.getElementById('tool-app').style.display = 'block';
+  document.getElementById('uses-left-display').textContent = left;
+  if (left <= 0) {
+    document.getElementById('tool-inputs').style.display = 'none';
+    document.getElementById('tool-btn').parentElement.style.display = 'none';
+    document.getElementById('tool-counter').style.display = 'none';
+    document.getElementById('tool-wall').style.display = 'block';
+  }
+}
+
+async function runAnalysis() {
+  const jd = document.getElementById('tool-jd').value.trim();
+  const cv = document.getElementById('tool-cv').value.trim();
+  if (!jd) { showToast('Cole a descrição da vaga', 'err'); return; }
+  if (!cv) { showToast('Cole o texto do seu currículo', 'err'); return; }
+  const left = MAX_FREE - getUsage();
+  if (left <= 0) { document.getElementById('tool-wall').style.display = 'block'; return; }
+
+  document.getElementById('tool-inputs').style.display = 'none';
+  document.getElementById('tool-btn').parentElement.style.display = 'none';
+  document.getElementById('tool-loading').style.display = 'block';
+  document.getElementById('tool-result').style.display = 'none';
+
+  const msgs = ['Lendo a descrição da vaga...','Analisando seu currículo...','Calculando compatibilidade...','Pesquisando dados da empresa...','Reescrevendo o currículo...'];
+  let mi = 0;
+  const msgInt = setInterval(() => { if (mi < msgs.length - 1) document.getElementById('loading-msg').textContent = msgs[++mi]; }, 5000);
+
+  try {
+    const res = await fetch('/.netlify/functions/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jd, cv })
+    });
+    clearInterval(msgInt);
+    if (!res.ok) { const err = await res.json(); throw new Error(err.error || 'Erro na análise'); }
+    const data = await res.json();
+    setUsage(getUsage() + 1);
+    const newLeft = MAX_FREE - getUsage();
+    document.getElementById('uses-left-display').textContent = newLeft;
+    renderResult(data);
+  } catch (err) {
+    clearInterval(msgInt);
+    showToast('Erro: ' + err.message, 'err');
+    document.getElementById('tool-loading').style.display = 'none';
+    document.getElementById('tool-inputs').style.display = 'grid';
+    document.getElementById('tool-btn').parentElement.style.display = 'block';
+  }
+}
+
+function renderResult(data) {
+  document.getElementById('tool-loading').style.display = 'none';
+  document.getElementById('fit-score').textContent = (data.fit_score || 0) + '%';
+  document.getElementById('ats-score').textContent = (data.ats_score || 0) + '%';
+  document.getElementById('curriculo-content').textContent = data.curriculo_reescrito || '';
+  const gl = document.getElementById('gaps-list');
+  gl.innerHTML = (data.gaps || []).map(g => {
+    const c = { ok: { bg: 'var(--green-light)', color: '#155C1B', badge: 'var(--green)', label: 'OK' }, warn: { bg: '#FFF8E1', color: '#7B5800', badge: 'var(--amber)', label: 'Ajustar' }, fix: { bg: 'var(--red-soft)', color: 'var(--red-text)', badge: '#E53935', label: 'Incluir' } }[g.nivel] || { bg: 'var(--green-light)', color: '#155C1B', badge: 'var(--green)', label: 'OK' };
+    return `<div style="background:${c.bg};border-radius:8px;padding:12px 14px;color:${c.color};"><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span style="font-size:9px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;background:${c.badge};color:white;padding:2px 7px;border-radius:20px;">${c.label}</span><span style="font-size:13px;font-weight:700;">${g.titulo}</span></div><div style="font-size:12px;opacity:0.8;padding-left:4px;">${g.motivo}</div></div>`;
+  }).join('');
+  document.getElementById('linkedin-content').textContent = data.linkedin_headline || '';
+  document.getElementById('empresa-content').textContent = data.sobre_empresa || '';
+  document.getElementById('tool-result').style.display = 'block';
+  if (MAX_FREE - getUsage() <= 0) {
+    setTimeout(() => {
+      document.getElementById('tool-inputs').style.display = 'none';
+      document.getElementById('tool-btn').parentElement.style.display = 'none';
+      document.getElementById('tool-counter').style.display = 'none';
+    }, 300);
+  }
+}
+
+function switchResultTab(btn, tab) {
+  document.querySelectorAll('.result-tab').forEach(t => { t.style.background = 'transparent'; t.style.color = 'var(--gray)'; });
+  btn.style.background = 'var(--blue)'; btn.style.color = 'var(--white)';
+  document.querySelectorAll('.result-panel').forEach(p => p.style.display = 'none');
+  document.getElementById('tab-' + tab).style.display = 'block';
+}
+
+function copyResult(id) {
+  navigator.clipboard.writeText(document.getElementById(id).textContent).then(() => showToast('Copiado!', 'ok'));
+}
+
+function resetTool() {
+  const left = MAX_FREE - getUsage();
+  if (left <= 0) { document.getElementById('tool-wall').style.display = 'block'; document.getElementById('tool-result').style.display = 'none'; return; }
+  document.getElementById('tool-result').style.display = 'none';
+  document.getElementById('tool-inputs').style.display = 'grid';
+  document.getElementById('tool-btn').parentElement.style.display = 'block';
+  document.getElementById('tool-jd').value = '';
+  document.getElementById('tool-cv').value = '';
 }
 // CAROUSEL
 let cur = 0; const total = 3; const dur = 5000;
@@ -925,6 +1114,7 @@ function toggleFaq(btn) {
   if (!open) item.classList.add('open');
 }
 window.addEventListener('load', () => {
+  initTool();
   if (isRegistered()) {
     const left = MAX_FREE - getUsage();
     if (left > 0) { const b = document.getElementById('usage-banner'); b.textContent = `${left} análise${left > 1 ? 's' : ''} gratuita${left > 1 ? 's' : ''} disponível${left > 1 ? 'is' : ''}`; b.classList.add('show'); }
