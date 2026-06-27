@@ -153,15 +153,38 @@ JSON obrigatório:
 
     const result = JSON.parse(text.substring(start, end + 1));
 
-    // Salva resultado com ID único
-    const crypto = require('crypto');
-    const analysisId = crypto.randomBytes(16).toString('hex');
-    try {
-      const { getStore } = require('@netlify/blobs');
-      const store = getStore('analyses');
-      await store.setJSON(analysisId, { ...result, createdAt: Date.now() });
-    } catch(e) {
-      console.log('Blob save skipped:', e.message);
+    // Salva no Supabase (service_role bypassa RLS)
+    let analysisId = null;
+    const SUPABASE_URL = process.env.SUPABASE_URL;
+    const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (SUPABASE_URL && SUPABASE_KEY) {
+      try {
+        const sbRes = await fetch(`${SUPABASE_URL}/rest/v1/analyses`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=representation'
+          },
+          body: JSON.stringify({
+            empresa: result.empresa,
+            cargo: result.cargo,
+            fit_score: result.fit_score,
+            ats_score: result.ats_score,
+            curriculo_reescrito: result.curriculo_reescrito,
+            gaps: result.gaps,
+            linkedin_headline: result.linkedin_headline,
+            sobre_empresa: result.sobre_empresa
+          })
+        });
+        if (sbRes.ok) {
+          const [row] = await sbRes.json();
+          analysisId = row?.id;
+        }
+      } catch(e) {
+        console.log('Supabase save skipped:', e.message);
+      }
     }
 
     return {
