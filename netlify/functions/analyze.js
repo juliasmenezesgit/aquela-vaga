@@ -70,33 +70,76 @@ JSON obrigatório:
   "sobre_empresa": "resumo da empresa e faixa salarial estimada em reais"
 }`;
 
+  function friendlyError(status, errBody) {
+    if (status === 503 || status === 529) {
+      return 'Serviço temporariamente sobrecarregado. Tente novamente em instantes.';
+    }
+    if (status === 429) {
+      return 'Muitas requisições simultâneas. Aguarde alguns segundos e tente novamente.';
+    }
+    if (errBody && (errBody.includes('credit') || errBody.includes('balance') || errBody.includes('authentication'))) {
+      return 'Serviço temporariamente indisponível. Tente mais tarde.';
+    }
+    return 'Erro inesperado. Tente novamente em instantes.';
+  }
+
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 25000);
+    const startTime = Date.now();
+    // Tenta haiku primeiro; se sobrecarregado (503/529), cai pro sonnet
+    const models = ['claude-haiku-4-5', 'claude-sonnet-4-6'];
+    let finalResponse = null;
+    let lastStatus = null;
+    let lastErrBody = null;
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_KEY,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5',
-        max_tokens: 2000,
-        messages: [{ role: 'user', content: prompt }]
-      }),
-      signal: controller.signal
-    });
+    for (const model of models) {
+      const elapsed = Date.now() - startTime;
+      const remaining = 23000 - elapsed;
+      if (remaining < 2000) break;
 
-    clearTimeout(timeout);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), remaining);
 
-    if (!response.ok) {
-      const err = await response.text();
-      return { statusCode: response.status, body: JSON.stringify({ error: 'Erro na API', detail: err }) };
+      try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': ANTHROPIC_KEY,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model,
+            max_tokens: 2000,
+            messages: [{ role: 'user', content: prompt }]
+          }),
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+
+        if (response.ok) {
+          finalResponse = response;
+          break;
+        }
+
+        lastStatus = response.status;
+        lastErrBody = await response.text();
+
+        // Só tenta o próximo modelo em caso de sobrecarga
+        if (lastStatus !== 503 && lastStatus !== 529) break;
+      } catch(e) {
+        clearTimeout(timeout);
+        if (e.name === 'AbortError') {
+          return { statusCode: 504, body: JSON.stringify({ error: 'A análise demorou muito. Tente novamente.' }) };
+        }
+        throw e;
+      }
     }
 
-    const data = await response.json();
+    if (!finalResponse) {
+      return { statusCode: 503, body: JSON.stringify({ error: friendlyError(lastStatus, lastErrBody) }) };
+    }
+
+    const data = await finalResponse.json();
     let text = '';
     for (const block of data.content || []) {
       if (block.type === 'text') text += block.text;
@@ -127,6 +170,6 @@ JSON obrigatório:
       body: JSON.stringify({ ...result, analysisId })
     };
   } catch(err) {
-    return { statusCode: 500, body: JSON.stringify({ error: 'Erro interno', detail: err.message }) };
+    return { statusCode: 500, body: JSON.stringify({ error: 'Erro inesperado. Tente novamente em instantes.' }) };
   }
 };
